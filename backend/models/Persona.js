@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
-import db from "../db/db";
-import { userModel } from "./User.js";
+import db from "../db/db.js";
+import proveedorModel from "./Proveedor.js";
+import userModel from "./User.js";
 
 const personaModel = db.define('personas', {
     id: {
@@ -27,12 +28,22 @@ const personaModel = db.define('personas', {
 })
 
 //Relacion de one a one con user
-personaModel.hasOne(userModel,{
+personaModel.hasOne(userModel, {
     foreignKey: 'personaId',
     sourceKey: 'id'
 })
 
-userModel.belongsTo(personaModel,{
+userModel.belongsTo(personaModel, {
+    foreignKey: 'personaId',
+    targetKey: 'id'
+})
+
+personaModel.hasOne(proveedorModel, {
+    foreignKey: 'personaId',
+    sourceKey: 'id'
+})
+
+proveedorModel.belongsTo(personaModel, {
     foreignKey: 'personaId',
     targetKey: 'id'
 })

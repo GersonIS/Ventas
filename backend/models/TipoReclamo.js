@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
-import db from "../db/db";
+import db from "../db/db.js";
+import reclamoModel from "./Reclamo.js";
 
 const tipoReclamoModel = db.define('tipo_reclamo', {
     id: {
@@ -13,6 +14,16 @@ const tipoReclamoModel = db.define('tipo_reclamo', {
     }
 }, {
     timestamps: true
+})
+
+tipoReclamoModel.hasMany(reclamoModel,{
+    foreignKey: 'tipoReclamoId',
+    sourceKey: 'id'
+})
+
+reclamoModel.belongsTo(tipoReclamoModel,{
+    foreignKey: 'tipoReclamoId',
+    targetKey: 'id'
 })
 
 export default tipoReclamoModel;

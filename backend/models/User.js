@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
-import db from "../db/db";
+import db from "../db/db.js";
 
-const userModel = db.define('users',{
+const userModel = db.define('users', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -20,7 +20,7 @@ const userModel = db.define('users',{
         type: DataTypes.STRING(60),
         defaultValue: "default.jpg"
     }
-},{
+}, {
     timestamps: true
 })
 

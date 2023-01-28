@@ -1,8 +1,7 @@
 import { DataTypes } from "sequelize";
 import db from "../db/db.js";
-import userModel from "./User.js";
 
-const clienteModel = db.define('clientes', {
+const medioPagoModel = db.define('medio_pago', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -16,14 +15,4 @@ const clienteModel = db.define('clientes', {
     timestamps: true
 })
 
-userModel.hasOne(clienteModel, {
-    foreignKey: 'userId',
-    sourceKey: 'id'
-})
-
-clienteModel.belongsTo(userModel, {
-    foreignKey: 'userId',
-    targetKey: 'id'
-})
-
-export default clienteModel;
+export default medioPagoModel;

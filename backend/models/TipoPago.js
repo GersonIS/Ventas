@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
-import db from "../db/db";
+import db from "../db/db.js";
+import medioPagoModel from "./MedioPago.js";
 
 const tipoPagoModel = db.define('tipo_pago', {
     id: {
@@ -13,6 +14,16 @@ const tipoPagoModel = db.define('tipo_pago', {
     }
 }, {
     timestamps: true
+})
+
+tipoPagoModel.hasMany(medioPagoModel, {
+    foreignKey: 'tipoPagoId',
+    sourceKey: 'id'
+})
+
+medioPagoModel.belongsTo(tipoPagoModel, {
+    foreignKey: 'tipoPagoId',
+    targetKey: 'id'
 })
 
 export default tipoPagoModel;

@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
-import db from "../db/db";
-import { tiendaModel } from "./Tienda";
+import db from "../db/db.js";
+import tiendaModel from "./Tienda.js";
 
 const distritoModel = db.define('distritos', {
     id: {

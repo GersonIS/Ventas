@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
-import db from "../db/db";
+import db from "../db/db.js";
+import medioEntregaModel from "./MedioEntrega.js";
 
 const tipoEntregaModel = db.define('tipo_entrega', {
     id: {
@@ -13,6 +14,16 @@ const tipoEntregaModel = db.define('tipo_entrega', {
     }
 }, {
     timestamps: true
+})
+
+tipoEntregaModel.hasMany(medioEntregaModel, {
+    foreignKey: 'tipoEntregaId',
+    sourceKey: 'id'
+})
+
+medioEntregaModel.belongsTo(tipoEntregaModel, {
+    foreignKey: 'tipoEntregaId',
+    targetKey: 'id'
 })
 
 export default tipoEntregaModel;

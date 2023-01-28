@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
-import db from "../db/db";
-import { provinciaModel } from "./Provincia";
+import db from "../db/db.js";
+import provinciaModel from "./Provincia.js";
 
 const departamentoModel = db.define('departamentos', {
     id: {
@@ -12,8 +12,8 @@ const departamentoModel = db.define('departamentos', {
         type: DataTypes.STRING(45),
         allowNull: false
     }
-}, { 
-    timestamps: true 
+}, {
+    timestamps: true
 })
 
 departamentoModel.hasMany(provinciaModel, {

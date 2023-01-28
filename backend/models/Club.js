@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
-import db from "../db/db";
+import db from "../db/db.js";
+import clienteModel from "./Cliente.js";
 
 const clubModel = db.define('clubes', {
     id: {
@@ -13,6 +14,16 @@ const clubModel = db.define('clubes', {
     }
 }, {
     timestamps: true
+})
+
+clubModel.hasMany(clienteModel, {
+    foreignKey: 'clubId',
+    sourceKey: 'id'
+})
+
+clienteModel.belongsTo(clubModel, {
+    foreignKey: 'clubId',
+    targetKey: 'id'
 })
 
 export default clubModel;

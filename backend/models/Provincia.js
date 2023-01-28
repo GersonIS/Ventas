@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import db from "../db/db";
+import db from "../db/db.js";
 import distritoModel from "./Distrito.js";
 
 const provinciaModel = db.define('provincias', {
