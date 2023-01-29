@@ -13,7 +13,7 @@ export const getAllProveedores = async (req, res) => {
 export const getProveedor = async (req, res) => {
     try {
         const proveedor = await proveedorModel.findAll({ where: { id: req.params.id } });
-        res.json(proveedor);
+        res.json(proveedor[0]);
     } catch (error) {
         res.json({ message: `Error al traer un proveedor ${error}` });
     }
@@ -53,7 +53,7 @@ export const deleteProveedor = async (req, res) => {
         const personaId = proveedor[0].personaId;
         await personaModel.destroy({ where: { id: personaId } });
         await proveedorModel.destroy({ where: { id: proveedorId } });
-        res.json({ message: 'Se elimino el proveedor con exito' })
+        res.json({ message: 'Se elimino el proveedor con exito' });
     } catch (error) {
         res.json({ message: `Error al eliminar un proveedor ${error}` });
     }

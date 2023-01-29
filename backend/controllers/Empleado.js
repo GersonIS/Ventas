@@ -11,6 +11,15 @@ export const getAllEmpleados = async (req, res) => {
     }
 }
 
+export const getEmpleado = async (req, res) => {
+    try {
+        const empleado = await empleadoModel.findAll({where:{id:req.params.id}});
+        res.json(empleado[0]);
+    } catch (error) {
+        res.json({ message: `Error al traer un empleado ${error}` });
+    }
+}
+
 export const createEmpleado = async (req, res) => {
     try {
         const { correo, celular, documento, username, password, ruta, sueldo, rol } = req.body;

@@ -11,6 +11,15 @@ export const getAllClientes = async (req, res) => {
     }
 }
 
+export const getCliente = async (req, res) => {
+    try {
+        const cliente = await clienteModel.findAll({where:{id:req.params.id}});
+        res.json(cliente[0]);
+    } catch (error) {
+        res.json({ message: `Error al traer un cliente ${error}` });
+    }
+}
+
 export const createCliente = async (req, res) => {
     try {
         const { correo, celular, documento, username, password, ruta, descripcion } = req.body;
