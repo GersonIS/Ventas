@@ -27,7 +27,7 @@ userModel.hasOne(empleadoModel, {
 
 empleadoModel.belongsTo(userModel, {
     foreignKey: 'userId',
-    targetKey: true
+    targetKey: 'id'
 })
 
 export default empleadoModel;

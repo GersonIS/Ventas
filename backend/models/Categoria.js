@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
-import db from "../db/db";
-import empleadoModel from "./Empleado";
+import db from "../db/db.js";
+import empleadoModel from "./Empleado.js";
 
 const categoriaModel = db.define('categorias', {
     id: {
