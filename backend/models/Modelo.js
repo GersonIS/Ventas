@@ -12,18 +12,13 @@ const modeloModel = db.define('modelos', {
         type: DataTypes.STRING(15),
         allowNull: false
     }
-}, {
-    timestamps: true
 })
 
 empleadoModel.hasMany(modeloModel, {
-    foreignKey: 'empleadoId',
-    sourceKey: 'id'
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-modeloModel.belongsTo(empleadoModel, {
-    foreignKey: 'empleadoId',
-    targetKey: 'id'
-})
+modeloModel.belongsTo(empleadoModel)
 
 export default modeloModel;

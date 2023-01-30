@@ -1,8 +1,8 @@
-import { DataTypes } from "sequelize";
 import db from "../db/db.js";
-import reclamoModel from "./Reclamo.js";
+import { DataTypes } from "sequelize";
+import estadoVentaModel from "./EstadoVenta.js";
 
-const tipoReclamoModel = db.define('tipo_reclamo', {
+const estadoEntregaModel = db.define('estado_entrega',{
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -14,11 +14,11 @@ const tipoReclamoModel = db.define('tipo_reclamo', {
     }
 })
 
-tipoReclamoModel.hasMany(reclamoModel, {
+estadoEntregaModel.hasMany(estadoVentaModel, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 })
 
-reclamoModel.belongsTo(tipoReclamoModel)
+estadoVentaModel.belongsTo(estadoEntregaModel)
 
-export default tipoReclamoModel;
+export default estadoEntregaModel;

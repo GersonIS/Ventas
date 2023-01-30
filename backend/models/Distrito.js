@@ -12,18 +12,13 @@ const distritoModel = db.define('distritos', {
         type: DataTypes.STRING(45),
         allowNull: false
     }
-}, {
-    timestamps: true
 })
 
 distritoModel.hasMany(tiendaModel, {
-    foreignKey: 'distritoId',
-    sourceKey: 'id'
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-tiendaModel.belongsTo(distritoModel, {
-    foreignKey: 'distritoId',
-    targetKey: 'id'
-})
+tiendaModel.belongsTo(distritoModel)
 
 export default distritoModel;

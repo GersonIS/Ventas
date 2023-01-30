@@ -3,7 +3,6 @@ import db from "../db/db.js";
 import clienteModel from "./Cliente.js";
 import comprobanteModel from "./Comprobante.js";
 import medioEntregaModel from "./MedioEntrega.js";
-import medioPagoModel from "./MedioPago.js";
 import tiendaModel from "./Tienda.js";
 
 const ventaModel = db.define('ventas',{
@@ -28,58 +27,34 @@ const ventaModel = db.define('ventas',{
         type: DataTypes.DECIMAL(8,2),
         allowNull: false
     }
-},{
-    timestamps: true
 })
 
-tiendaModel.hasMany(ventaModel,{
-    foreignKey: 'tiendaId',
-    sourceKey: 'id'
+tiendaModel.hasMany(ventaModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-ventaModel.belongsTo(tiendaModel,{
-    foreignKey: 'tiendaId',
-    targetKey: 'id'
+ventaModel.belongsTo(tiendaModel)
+
+comprobanteModel.hasOne(ventaModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-comprobanteModel.hasOne(ventaModel,{
-    foreignKey: 'comprobanteId',
-    sourceKey: 'id'
+ventaModel.belongsTo(comprobanteModel)
+
+clienteModel.hasMany(ventaModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-ventaModel.belongsTo(comprobanteModel,{
-    foreignKey: 'comprobanteId',
-    targetKey: 'id'
+ventaModel.belongsTo(clienteModel)
+
+medioEntregaModel.hasMany(ventaModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-clienteModel.hasMany(ventaModel,{
-    foreignKey: 'clienteId',
-    sourceKey: 'id'
-})
-
-ventaModel.belongsTo(clienteModel,{
-    foreignKey: 'clienteId',
-    targetKey: 'id'
-})
-
-medioPagoModel.hasMany(ventaModel,{
-    foreignKey: 'medioPagoId',
-    sourceKey: 'id'
-})
-
-ventaModel.belongsTo(medioPagoModel,{
-    foreignKey: 'medioPagoId',
-    targetKey: 'id'
-})
-
-medioEntregaModel.hasMany(ventaModel,{
-    foreignKey: 'medioEntregaId',
-    sourceKey: 'id'
-})
-
-ventaModel.belongsTo(medioEntregaModel,{
-    foreignKey: 'medioEntregaId',
-    targetKey: 'id'
-})
+ventaModel.belongsTo(medioEntregaModel)
 
 export default ventaModel;

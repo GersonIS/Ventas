@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import db from "../db/db.js";
 import clienteModel from "./Cliente.js";
+import empleadoModel from "./Empleado.js";
 
 const clubModel = db.define('clubes', {
     id: {
@@ -12,18 +13,20 @@ const clubModel = db.define('clubes', {
         type: DataTypes.STRING(45),
         allowNull: false
     }
-}, {
-    timestamps: true
 })
 
 clubModel.hasMany(clienteModel, {
-    foreignKey: 'clubId',
-    sourceKey: 'id'
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-clienteModel.belongsTo(clubModel, {
-    foreignKey: 'clubId',
-    targetKey: 'id'
+clienteModel.belongsTo(clubModel)
+
+empleadoModel.hasMany(clubModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
+
+clubModel.belongsTo(empleadoModel)
 
 export default clubModel;

@@ -25,7 +25,7 @@ export const createProveedor = async (req, res) => {
         await personaModel.create({ correo, celular, documento });
         const pId = await personaModel.findAll({ where: { correo } });
         const personaId = pId[0].id;
-        await proveedorModel.create({ empresa, personaId, empleadoId });
+        await proveedorModel.create({ empresa, empleadoId, personaId });
         res.json({ message: 'Se creo el proveedor con exito' });
     } catch (error) {
         res.json({ message: `Error al crear un proveedor ${error}` });
@@ -48,11 +48,9 @@ export const updateProveedor = async (req, res) => {
 
 export const deleteProveedor = async (req, res) => {
     try {
-        const proveedorId = req.params.id;
-        const proveedor = await proveedorModel.findAll({ where: { id: proveedorId } });
-        const personaId = proveedor[0].personaId;
+        const proveedorId = await proveedorModel.findAll({ where: { id: req.params.id } });
+        const personaId = proveedorId[0].personaId;
         await personaModel.destroy({ where: { id: personaId } });
-        await proveedorModel.destroy({ where: { id: proveedorId } });
         res.json({ message: 'Se elimino el proveedor con exito' });
     } catch (error) {
         res.json({ message: `Error al eliminar un proveedor ${error}` });

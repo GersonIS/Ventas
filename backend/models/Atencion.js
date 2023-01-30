@@ -13,28 +13,20 @@ const atencionModel = db.define('atenciones', {
         type: DataTypes.STRING(45),
         allowNull: false
     }
-}, {
-    timestamps: true
 })
 
 empleadoModel.hasMany(atencionModel, {
-    foreignKey: 'empleadoId',
-    sourceKey: 'id'
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-atencionModel.belongsTo(empleadoModel, {
-    foreignKey: 'empleadoId',
-    targetKey: 'id'
-})
+atencionModel.belongsTo(empleadoModel)
 
 clienteModel.hasMany(atencionModel, {
-    foreignKey: 'clienteId',
-    sourceKey: 'id'
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-atencionModel.belongsTo(clienteModel, {
-    foreignKey: 'clienteId',
-    targetKey: 'id'
-})
+atencionModel.belongsTo(clienteModel)
 
 export default atencionModel;

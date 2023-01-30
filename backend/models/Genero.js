@@ -12,18 +12,13 @@ const generoModel = db.define('generos', {
         type: DataTypes.STRING(10),
         allowNull: false
     }
-}, {
-    timestamps: true
 })
 
 empleadoModel.hasMany(generoModel, {
-    foreignKey: 'empleadoId',
-    sourceKey: 'id'
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-generoModel.belongsTo(empleadoModel, {
-    foreignKey: 'empleadoId',
-    targetKey: 'id'
-})
+generoModel.belongsTo(empleadoModel)
 
 export default generoModel;

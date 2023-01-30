@@ -12,18 +12,13 @@ const categoriaModel = db.define('categorias', {
         type: DataTypes.STRING(20),
         allowNull: false
     }
-}, {
-    timestamps: true
 })
 
-empleadoModel.hasMany(categoriaModel,{
-    foreignKey: 'empleadoId',
-    sourceKey: 'id'
+empleadoModel.hasMany(categoriaModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-categoriaModel.belongsTo(empleadoModel,{
-    foreignKey: 'empleadoId',
-    targetKey: 'id'
-})
+categoriaModel.belongsTo(empleadoModel)
 
 export default categoriaModel;

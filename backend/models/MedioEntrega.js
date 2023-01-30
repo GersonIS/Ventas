@@ -11,8 +11,6 @@ const medioEntregaModel = db.define('medio_entrega', {
         type: DataTypes.STRING(45),
         allowNull: true
     }
-}, {
-    timestamps: true
 })
 
 export default medioEntregaModel;

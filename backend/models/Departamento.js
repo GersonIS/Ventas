@@ -12,18 +12,13 @@ const departamentoModel = db.define('departamentos', {
         type: DataTypes.STRING(45),
         allowNull: false
     }
-}, {
-    timestamps: true
 })
 
 departamentoModel.hasMany(provinciaModel, {
-    foreignKey: 'departamentoId',
-    sourceKey: 'id'
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-provinciaModel.belongsTo(departamentoModel, {
-    foreignKey: 'departamentoId',
-    targetKey: 'id'
-})
+provinciaModel.belongsTo(departamentoModel)
 
 export default departamentoModel;

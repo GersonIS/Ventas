@@ -12,18 +12,13 @@ const tallaModel = db.define('tallas', {
         type: DataTypes.STRING(5),
         allowNull: false
     }
-}, {
-    timestamps: true
 })
 
 empleadoModel.hasMany(tallaModel, {
-    foreignKey: 'empleadoId',
-    sourceKey: 'id'
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-tallaModel.belongsTo(empleadoModel, {
-    foreignKey: 'empleadoId',
-    targetKey: 'id'
-})
+tallaModel.belongsTo(empleadoModel)
 
 export default tallaModel;

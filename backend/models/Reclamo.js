@@ -19,24 +19,18 @@ const reclamoModel = db.define('reclamos',{
     }
 })
 
-ventaModel.hasMany(reclamoModel,{
-    foreignKey: 'ventaId',
-    sourceKey: 'id'
+ventaModel.hasMany(reclamoModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-reclamoModel.belongsTo(ventaModel,{
-    foreignKey: 'ventaId',
-    targetKey: 'id'
+reclamoModel.belongsTo(ventaModel)
+
+empleadoModel.hasMany(reclamoModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-empleadoModel.hasMany(reclamoModel,{
-    foreignKey: 'empleadoId',
-    sourceKey: 'id'
-})
-
-reclamoModel.belongsTo(empleadoModel,{
-    foreignKey: 'empleadoId',
-    targetKey: 'id'
-})
+reclamoModel.belongsTo(empleadoModel)
 
 export default reclamoModel;

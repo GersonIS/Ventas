@@ -26,38 +26,27 @@ const compraModel = db.define('compras',{
         type: DataTypes.DECIMAL(8,2),
         allowNull: false
     }
-},{
-    timestamps: true
 })
 
-empleadoModel.hasMany(compraModel,{
-    foreignKey: 'empleadoId',
-    sourceKey: 'id'
+empleadoModel.hasMany(compraModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-compraModel.belongsTo(empleadoModel,{
-    foreignKey: 'empleadoId',
-    targetKey: 'id'
+compraModel.belongsTo(empleadoModel)
+
+tiendaModel.hasMany(compraModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-tiendaModel.hasMany(compraModel,{
-    foreignKey: 'tiendaId',
-    sourceKey: 'id'
+compraModel.belongsTo(tiendaModel)
+
+comprobanteModel.hasOne(compraModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-compraModel.belongsTo(tiendaModel,{
-    foreignKey: 'tiendaId',
-    targetKey: 'id'
-})
-
-comprobanteModel.hasOne(compraModel,{
-    foreignKey: 'comprobanteId',
-    sourceKey: 'id'
-})
-
-compraModel.belongsTo(comprobanteModel,{
-    foreignKey: 'comprobanteId',
-    targetKey: 'id'
-})
+compraModel.belongsTo(comprobanteModel)
 
 export default compraModel;

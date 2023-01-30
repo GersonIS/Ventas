@@ -31,24 +31,18 @@ const compraProductoModel = db.define('compra_producto',{
     }
 })
 
-compraModel.hasMany(compraProductoModel,{
-    foreignKey: 'compraId',
-    sourceKey: 'id'
+compraModel.hasMany(compraProductoModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-compraProductoModel.belongsTo(compraModel,{
-    foreignKey: 'compraId',
-    targetKey: 'id'
+compraProductoModel.belongsTo(compraModel)
+
+detalleProductoModel.hasMany(compraProductoModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-detalleProductoModel.hasMany(compraProductoModel,{
-    foreignKey: 'detalleProductoId',
-    sourceKey: 'id'
-})
-
-compraProductoModel.belongsTo(detalleProductoModel,{
-    foreignKey: 'detalleProductoId',
-    targetKey: 'id'
-})
+compraProductoModel.belongsTo(detalleProductoModel)
 
 export default compraProductoModel;

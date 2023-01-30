@@ -11,8 +11,6 @@ const comprobanteModel = db.define('comprobantes', {
         type: DataTypes.STRING(20),
         allowNull: true
     }
-}, {
-    timestamps: true
 })
 
 export default comprobanteModel;

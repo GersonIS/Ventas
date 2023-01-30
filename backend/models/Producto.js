@@ -22,28 +22,20 @@ const productoModel = db.define('productos', {
         type: DataTypes.STRING(60),
         allowNull: true
     }
-}, {
-    timestamps: true
 })
 
-categoriaModel.hasMany(productoModel,{
-    foreignKey: 'categoriaId',
-    sourceKey: 'id'
+categoriaModel.hasMany(productoModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-productoModel.belongsTo(categoriaModel,{
-    foreignKey: 'categoriaId',
-    targetKey: 'id'
+productoModel.belongsTo(categoriaModel)
+
+empleadoModel.hasMany(productoModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-empleadoModel.hasMany(productoModel,{
-    foreignKey: 'empleadoId',
-    sourceKey: 'id'
-})
-
-productoModel.belongsTo(empleadoModel,{
-    foreignKey: 'empleadoId',
-    targetKey: 'id'
-})
+productoModel.belongsTo(empleadoModel)
 
 export default productoModel;

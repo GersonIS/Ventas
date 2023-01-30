@@ -13,28 +13,20 @@ const productoTiendaModel = db.define('producto_tienda', {
         type: DataTypes.INTEGER,
         defaultValue: 0
     }
-}, {
-    timestamps: true
 })
 
 tiendaModel.hasMany(productoTiendaModel, {
-    foreignKey: 'tiendaId',
-    sourceKey: 'id'
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-productoTiendaModel.belongsTo(tiendaModel, {
-    foreignKey: 'tiendaId',
-    targetKey: 'id'
-})
+productoTiendaModel.belongsTo(tiendaModel)
 
 detalleProductoModel.hasMany(productoTiendaModel, {
-    foreignKey: 'detalleProductoId',
-    sourceKey: 'id'
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-productoTiendaModel.belongsTo(detalleProductoModel, {
-    foreignKey: 'detalleProductoId',
-    targetKey: 'id'
-})
+productoTiendaModel.belongsTo(detalleProductoModel)
 
 export default productoTiendaModel;

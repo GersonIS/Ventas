@@ -12,18 +12,13 @@ const imagenModel = db.define('imagenes', {
         type: DataTypes.STRING(60),
         defaultValue: "default.jpg"
     }
-},{
-    timestamps: true
 })
 
-productoModel.hasMany(imagenModel,{
-    foreignKey: 'productoId',
-    sourceKey: 'id'
+productoModel.hasMany(imagenModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-imagenModel.belongsTo(productoModel,{
-    foreignKey: 'productoId',
-    targetKey: 'id'
-})
+imagenModel.belongsTo(productoModel)
 
 export default imagenModel;

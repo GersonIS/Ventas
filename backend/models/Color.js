@@ -12,18 +12,13 @@ const colorModel = db.define('colores', {
         type: DataTypes.STRING(10),
         allowNull: false
     }
-}, {
-    timestamps: true
 })
 
 empleadoModel.hasMany(colorModel, {
-    foreignKey: 'empleadoId',
-    sourceKey: 'id'
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-colorModel.belongsTo(empleadoModel, {
-    foreignKey: 'empleadoId',
-    targetKey: 'id'
-})
+colorModel.belongsTo(empleadoModel)
 
 export default colorModel;

@@ -12,18 +12,13 @@ const clienteModel = db.define('clientes', {
         type: DataTypes.STRING(45),
         allowNull: true
     }
-}, {
-    timestamps: true
 })
 
 userModel.hasOne(clienteModel, {
-    foreignKey: 'userId',
-    sourceKey: 'id'
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-clienteModel.belongsTo(userModel, {
-    foreignKey: 'userId',
-    targetKey: 'id'
-})
+clienteModel.belongsTo(userModel)
 
 export default clienteModel;

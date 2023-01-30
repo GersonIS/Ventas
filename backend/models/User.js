@@ -20,8 +20,6 @@ const userModel = db.define('users', {
         type: DataTypes.STRING(60),
         defaultValue: "default.jpg"
     }
-}, {
-    timestamps: true
 })
 
 export default userModel;

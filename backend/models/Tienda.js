@@ -19,9 +19,6 @@ const tiendaModel = db.define('tiendas', {
         type: DataTypes.STRING(60),
         allowNull: false
     }
-}, {
-    timestamps: true
 })
-
 
 export default tiendaModel;

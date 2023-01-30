@@ -12,18 +12,13 @@ const provinciaModel = db.define('provincias', {
         type: DataTypes.STRING(45),
         allowNull: false
     }
-}, {
-    timestamps: true
 })
 
 provinciaModel.hasMany(distritoModel, {
-    foreignKey: 'provinciaId',
-    sourceKey: 'id'
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-distritoModel.belongsTo(provinciaModel, {
-    foreignKey: 'provinciaId',
-    targetKey: 'id'
-})
+distritoModel.belongsTo(provinciaModel)
 
 export default provinciaModel;

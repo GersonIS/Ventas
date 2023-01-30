@@ -23,24 +23,18 @@ const productoVentaModel = db.define('producto_venta',{
     }
 })
 
-ventaModel.hasMany(productoVentaModel,{
-    foreignKey: 'ventaId',
-    sourceKey: 'id'
+ventaModel.hasMany(productoVentaModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-productoVentaModel.belongsTo(ventaModel,{
-    foreignKey: 'ventaId',
-    targetKey: 'id'
+productoVentaModel.belongsTo(ventaModel)
+
+detalleProductoModel.hasMany(productoVentaModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-detalleProductoModel.hasMany(productoVentaModel,{
-    foreignKey: 'detalleProductoId',
-    sourceKey: 'id'
-})
-
-productoVentaModel.belongsTo(detalleProductoModel,{
-    foreignKey: 'detalleProductoId',
-    targetKey: 'id'
-})
+productoVentaModel.belongsTo(detalleProductoModel)
 
 export default productoVentaModel;

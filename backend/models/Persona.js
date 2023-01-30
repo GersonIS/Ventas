@@ -23,29 +23,21 @@ const personaModel = db.define('personas', {
         allowNull: false,
         unique: true
     }
-}, {
-    timestamps: true
 })
 
 //Relacion de one a one con user
 personaModel.hasOne(userModel, {
-    foreignKey: 'personaId',
-    sourceKey: 'id'
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-userModel.belongsTo(personaModel, {
-    foreignKey: 'personaId',
-    targetKey: 'id'
-})
+userModel.belongsTo(personaModel)
 
 personaModel.hasOne(proveedorModel, {
-    foreignKey: 'personaId',
-    sourceKey: 'id'
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-proveedorModel.belongsTo(personaModel, {
-    foreignKey: 'personaId',
-    targetKey: 'id'
-})
+proveedorModel.belongsTo(personaModel)
 
 export default personaModel;

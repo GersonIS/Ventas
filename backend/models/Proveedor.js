@@ -12,18 +12,13 @@ const proveedorModel = db.define('proveedores',{
         type: DataTypes.STRING(30),
         allowNull: false
     }
-},{
-    timestamps: true
 })
 
-empleadoModel.hasMany(proveedorModel,{
-    foreignKey: 'empleadoId',
-    sourceKey: 'id'
+empleadoModel.hasMany(proveedorModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-proveedorModel.belongsTo(empleadoModel,{
-    foreignKey: 'empleadoId',
-    targetKey: 'id'
-})
+proveedorModel.belongsTo(empleadoModel)
 
 export default proveedorModel;

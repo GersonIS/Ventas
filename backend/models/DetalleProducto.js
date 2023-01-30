@@ -18,78 +18,55 @@ const detalleProductoModel = db.define('detalle_producto', {
         type: DataTypes.DECIMAL(8, 2),
         allowNull: false
     }
-}, {
-    timestamps: true
 })
 
-productoModel.hasMany(detalleProductoModel,{
-    foreignKey: 'productoId',
-    sourceKey: 'id'
+productoModel.hasMany(detalleProductoModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-detalleProductoModel.belongsTo(productoModel,{
-    foreignKey: 'productoId',
-    targetKey: 'id'
+detalleProductoModel.belongsTo(productoModel)
+
+temporadaModel.hasMany(detalleProductoModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-temporadaModel.hasMany(detalleProductoModel,{
-    foreignKey: 'temporadaId',
-    sourceKey: 'id'
+detalleProductoModel.belongsTo(temporadaModel)
+
+tallaModel.hasMany(detalleProductoModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-detalleProductoModel.belongsTo(temporadaModel,{
-    foreignKey: 'temporadaId',
-    targetKey: 'id'
+detalleProductoModel.belongsTo(tallaModel)
+
+modeloModel.hasMany(detalleProductoModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-tallaModel.hasMany(detalleProductoModel,{
-    foreignKey: 'tallaId',
-    sourceKey: 'id'
+detalleProductoModel.belongsTo(modeloModel)
+
+generoModel.hasMany(detalleProductoModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-detalleProductoModel.belongsTo(tallaModel,{
-    foreignKey: 'tallaId',
-    targetKey: 'id'
+detalleProductoModel.belongsTo(generoModel)
+
+colorModel.hasMany(detalleProductoModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-modeloModel.hasMany(detalleProductoModel,{
-    foreignKey: 'modeloId',
-    sourceKey: 'id'
+detalleProductoModel.belongsTo(colorModel)
+
+proveedorModel.hasMany(detalleProductoModel, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
-detalleProductoModel.belongsTo(modeloModel,{
-    foreignKey: 'modeloId',
-    targetKey: 'id'
-})
-
-generoModel.hasMany(detalleProductoModel,{
-    foreignKey: 'generoId',
-    sourceKey: 'id'
-})
-
-detalleProductoModel.belongsTo(generoModel,{
-    foreignKey: 'generoId',
-    targetKey: 'id'
-})
-
-colorModel.hasMany(detalleProductoModel,{
-    foreignKey: 'colorId',
-    sourceKey: 'id'
-})
-
-detalleProductoModel.belongsTo(colorModel,{
-    foreignKey: 'colorId',
-    targetKey: 'id'
-})
-
-proveedorModel.hasMany(detalleProductoModel,{
-    foreignKey: 'proveedorId',
-    sourceKey: 'id'
-})
-
-detalleProductoModel.belongsTo(proveedorModel,{
-    foreignKey: 'proveedorId',
-    targetKey: 'id'
-})
+detalleProductoModel.belongsTo(proveedorModel)
 
 export default detalleProductoModel;
