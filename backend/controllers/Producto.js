@@ -34,3 +34,19 @@ export const createProducto = async (req, res) => {
         res.json({ message: `Error al crear un producto ${error}` });
     }
 }
+
+export const updateProducto = async (req, res) => {
+    try {
+
+    } catch (error) {
+        res.json({ message: `Error al actualizar un producto ${error}` });
+    }
+}
+
+export const deleteProducto = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        res.json({ message: `Error al eliminar un producto ${error}` });
+    }
+}

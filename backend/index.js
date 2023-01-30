@@ -9,21 +9,35 @@ import './models/Modelo.js'; import './models/Persona.js'; import './models/Prod
 import './models/ProductoVenta.js'; import './models/Proveedor.js'; import './models/Provincia.js'; import './models/Reclamo.js';
 import './models/Talla.js'; import './models/Temporada.js'; import './models/Tienda.js';
 import './models/TipoReclamo.js'; import './models/User.js'; import './models/Venta.js';
-import routerEmpleado from "./routes/Empleado.js";
+import routerCategoria from "./routes/Categoria.js";
 import routerCliente from "./routes/Cliente.js";
+import routerClub from "./routes/Club.js";
+import routerColor from "./routes/Color.js";
+import routerEmpleado from "./routes/Empleado.js";
+import routerGenero from "./routes/Genero.js";
+import routerModelo from "./routes/Modelo.js";
 import routerProveedor from "./routes/Proveedor.js";
+import routerTalla from "./routes/Talla.js";
+import routerTemporada from "./routes/Temporada.js";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use('/empleados', routerEmpleado);
+app.use('/categorias', routerCategoria);
 app.use('/clientes', routerCliente);
+app.use('/clubes', routerClub);
+app.use('/colores', routerColor);
+app.use('/empleados', routerEmpleado);
+app.use('/generos', routerGenero);
+app.use('/modelos', routerModelo);
 app.use('/proveedores', routerProveedor);
+app.use('/tallas', routerTalla);
+app.use('/temporadas', routerTemporada);
 
 try {
     await db.authenticate();
-    await db.sync({force:false});
+    await db.sync({ force: false });
     console.log("Se conecto correctamente a la DB");
 } catch (error) {
     console.log(`Problema al conectar la DB ${error}`);

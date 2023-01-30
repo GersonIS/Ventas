@@ -39,8 +39,8 @@ export const updateTalla = async (req, res) => {
 export const deleteTalla = async (req, res) => {
     try {
         await tallaModel.destroy({ where: { id: req.params.id } });
-        res.json({ message: 'Se elimino la temporada con exito' });
+        res.json({ message: 'Se elimino la talla con exito' });
     } catch (error) {
-        res.json({ message: `Error al eliminar una temporada ${error}` });
+        res.json({ message: `Error al eliminar una talla ${error}` });
     }
 }

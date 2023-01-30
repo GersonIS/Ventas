@@ -43,10 +43,10 @@ export const updateEmpleado = async (req, res) => {
         await empleadoModel.update({ sueldo, rol }, { where: { id: empleadoId } });
         const empleado = await empleadoModel.findAll({ where: { id: empleadoId } });
         const userId = empleado[0].userId;
+        await userModel.update({ username, password, ruta }, { where: { id: userId } });
         const user = await userModel.findAll({ where: { id: userId } });
         const personaId = user[0].personaId;
         await personaModel.update({ correo, celular, documento }, { where: { id: personaId } });
-        await userModel.update({ username, password, ruta }, { where: { id: userId } });
         res.json({ message: 'Se actualizo el empleado con exito' });
     } catch (error) {
         res.json({ message: `Error al actualizar un empleado ${error}` });
@@ -55,9 +55,11 @@ export const updateEmpleado = async (req, res) => {
 
 export const deleteEmpleado = async (req, res) => {
     try {
-        //ver si resulta onDelete en proveedor
-        const empleadoId = req.params.id;
-        await empleadoModel.destroy({ where: { id: empleadoId } });
+        const empleado = await empleadoModel.findAll({ where: { id: req.params.id } });
+        const userId = empleado[0].userId;
+        const user = await userModel.findAll({ where: { id: userId } });
+        const personaId = user[0].personaId;
+        await personaModel.destroy({ where: { id: personaId } });
         res.json({ message: 'Se elimino un empleado con exito' });
     } catch (error) {
         res.json({ message: `Error al eliminar un empleado ${error}` });
