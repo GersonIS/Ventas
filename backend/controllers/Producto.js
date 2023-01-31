@@ -37,7 +37,15 @@ export const createProducto = async (req, res) => {
 
 export const updateProducto = async (req, res) => {
     try {
-
+        const { codigo, producto, descripcion, ruta1, ruta2, ruta3, ruta4, categoriaId } = req.body;
+        await productoModel.update({ codigo, producto, descripcion, categoriaId }, { where: { id: req.params.id } });
+        const product = await productoModel.findAll({ where: { id: req.params.id } });
+        const pId = product[0].id;
+        await imagenModel.update({ ruta1, pId });
+        await imagenModel.update({ ruta2, pId });
+        await imagenModel.update({ ruta3, pId });
+        await imagenModel.update({ ruta4, pId });
+        res.json({ message: 'Se actualizo el producto con exito' });
     } catch (error) {
         res.json({ message: `Error al actualizar un producto ${error}` });
     }
@@ -45,7 +53,8 @@ export const updateProducto = async (req, res) => {
 
 export const deleteProducto = async (req, res) => {
     try {
-        
+        await productoModel.destroy({ where: { id: req.params.id } });
+        res.json({ message: 'Se elimino un producto con exito' });
     } catch (error) {
         res.json({ message: `Error al eliminar un producto ${error}` });
     }

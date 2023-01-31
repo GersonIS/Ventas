@@ -8,7 +8,7 @@ import './models/Genero.js'; import './models/Imagen.js'; import './models/Medio
 import './models/Modelo.js'; import './models/Persona.js'; import './models/Producto.js'; import './models/ProductoTienda.js';
 import './models/ProductoVenta.js'; import './models/Proveedor.js'; import './models/Provincia.js'; import './models/Reclamo.js';
 import './models/Talla.js'; import './models/Temporada.js'; import './models/Tienda.js';
-import './models/TipoReclamo.js'; import './models/User.js'; import './models/Venta.js';
+import './models/TipoReclamo.js'; import './models/User.js'; import './models/Venta.js';import './models/EstadoEntrega.js';
 import routerCategoria from "./routes/Categoria.js";
 import routerCliente from "./routes/Cliente.js";
 import routerClub from "./routes/Club.js";
