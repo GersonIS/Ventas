@@ -16,7 +16,7 @@ const Sidebar = ({ changeState, door }) => {
             <ul className="list-unstyled px-2 list" id='list'>
                 <li>
                     <NavLink to="/main" className="text-decoration-none d-block px-3 py-2"><i
-                        className="fas fa-cloud-sun-rain me-2"></i>Me</NavLink>
+                        className="fas fa-cloud-sun-rain me-2"></i>Main</NavLink>
                 </li>
                 <li>
                     <NavLink to="/categories" className="text-decoration-none d-block px-3 py-2"><i
@@ -24,7 +24,7 @@ const Sidebar = ({ changeState, door }) => {
                 </li>
                 <li>
                     <NavLink to="/categories" className="text-decoration-none d-block px-3 py-2"><i
-                        className="fas fa-cloud-sun-rain me-2"></i>Clientes</NavLink>
+                        className="fas fa-cloud-sun-rain me-2"></i>Customers</NavLink>
                 </li>
                 <li>
                     <NavLink to="/categories" className="text-decoration-none d-block px-3 py-2"><i
@@ -36,7 +36,7 @@ const Sidebar = ({ changeState, door }) => {
                 </li>
                 <li>
                     <NavLink to="/categories" className="text-decoration-none d-block px-3 py-2"><i
-                        className="fas fa-cloud-sun-rain me-2"></i>Compra</NavLink>
+                        className="fas fa-cloud-sun-rain me-2"></i>Purchases</NavLink>
                 </li>
                 <li>
                     <NavLink to="/users" className="text-decoration-none d-block px-3 py-2"><i
