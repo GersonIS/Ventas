@@ -19,56 +19,56 @@ const Sidebar = ({ changeState, door }) => {
                         className="fas fa-cloud-sun-rain me-2"></i>Main</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/categories" className="text-decoration-none d-block px-3 py-2"><i
-                        className="fas fa-cloud-sun-rain me-2"></i>Categories</NavLink>
+                    <NavLink to="/categorias" className="text-decoration-none d-block px-3 py-2"><i
+                        className="fas fa-cloud-sun-rain me-2"></i>Categorias</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/categories" className="text-decoration-none d-block px-3 py-2"><i
-                        className="fas fa-cloud-sun-rain me-2"></i>Customers</NavLink>
+                    <NavLink to="/categorias" className="text-decoration-none d-block px-3 py-2"><i
+                        className="fas fa-cloud-sun-rain me-2"></i>Clientes</NavLink>
                 </li>
                 <li>
                     <NavLink to="/clubes" className="text-decoration-none d-block px-3 py-2"><i
                         className="fas fa-cloud-sun-rain me-2"></i>Clubes</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/colors" className="text-decoration-none d-block px-3 py-2"><i
-                        className="fas fa-cloud-sun-rain me-2"></i>Colors</NavLink>
+                    <NavLink to="/colores" className="text-decoration-none d-block px-3 py-2"><i
+                        className="fas fa-cloud-sun-rain me-2"></i>Colores</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/categories" className="text-decoration-none d-block px-3 py-2"><i
-                        className="fas fa-cloud-sun-rain me-2"></i>Purchases</NavLink>
+                    <NavLink to="/categorias" className="text-decoration-none d-block px-3 py-2"><i
+                        className="fas fa-cloud-sun-rain me-2"></i>Compras</NavLink>
                 </li>
                 <li>
                     <NavLink to="/users" className="text-decoration-none d-block px-3 py-2"><i
                         className="fal fa-users me-2"></i>Users</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/genders" className="text-decoration-none d-block px-3 py-2"><i
-                        className="fas fa-cloud-sun-rain me-2"></i>Genders</NavLink>
+                    <NavLink to="/generos" className="text-decoration-none d-block px-3 py-2"><i
+                        className="fas fa-cloud-sun-rain me-2"></i>Generos</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/models" className="text-decoration-none d-block px-3 py-2"><i
-                        className="fas fa-cloud-sun-rain me-2"></i>Models</NavLink>
+                    <NavLink to="/modelos" className="text-decoration-none d-block px-3 py-2"><i
+                        className="fas fa-cloud-sun-rain me-2"></i>Modelos</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/categories" className="text-decoration-none d-block px-3 py-2"><i
-                        className="fas fa-cloud-sun-rain me-2"></i>Products</NavLink>
+                    <NavLink to="/categorias" className="text-decoration-none d-block px-3 py-2"><i
+                        className="fas fa-cloud-sun-rain me-2"></i>Productos</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/categories" className="text-decoration-none d-block px-3 py-2"><i
-                        className="fas fa-cloud-sun-rain me-2"></i>Suppliers</NavLink>
+                    <NavLink to="/categorias" className="text-decoration-none d-block px-3 py-2"><i
+                        className="fas fa-cloud-sun-rain me-2"></i>Proveedores</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/sizes" className="text-decoration-none d-block px-3 py-2"><i
-                        className="fas fa-cloud-sun-rain me-2"></i>Sizes</NavLink>
+                    <NavLink to="/tallas" className="text-decoration-none d-block px-3 py-2"><i
+                        className="fas fa-cloud-sun-rain me-2"></i>Tallas</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/seasons" className="text-decoration-none d-block px-3 py-2"><i
-                        className="fas fa-cloud-sun-rain me-2"></i>Seasons</NavLink>
+                    <NavLink to="/temporadas" className="text-decoration-none d-block px-3 py-2"><i
+                        className="fas fa-cloud-sun-rain me-2"></i>Temporadas</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/markets" className="text-decoration-none d-block px-3 py-2"><i
-                        className="fas fa-cloud-sun-rain me-2"></i>Markets</NavLink>
+                    <NavLink to="/tiendas" className="text-decoration-none d-block px-3 py-2"><i
+                        className="fas fa-cloud-sun-rain me-2"></i>Tiendas</NavLink>
                 </li>
             </ul>
         </div>

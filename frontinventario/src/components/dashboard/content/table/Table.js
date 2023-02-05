@@ -1,7 +1,7 @@
 import TableHead from "./TableHead";
 import TableRaw from "./TableRaw";
 
-const Table = ({ table, datos,type }) => {
+const Table = ({ table, datos, type }) => {
     return (
         <table className="table">
             <thead>
