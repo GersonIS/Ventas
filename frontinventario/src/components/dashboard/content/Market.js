@@ -1,31 +1,35 @@
 import Table from "./table/Table";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Market = () => {
-    const table = ["Id","Tienda","Codigo Postal","Direccion","Opciones"];
+    const table = ["Id", "Tienda", "Codigo Postal", "Direccion", "Opciones"];
     const [datos, setDatos] = useState([]);
     const URL = "http://localhost:5000/tiendas/";
-    const navigate = useNavigate();
     const data = async () => {
         const res = await axios.get(URL);
         setDatos(res.data);
+    }
+
+    const deleteOpcion = async (URL, id) => {
+        await axios.delete(`${URL}${id}`);
+        data();
     }
 
     useEffect(() => {
         data();
     }, [])
 
-    return(
+    return (
         < div className="container" >
             <div className="row">
                 <div className="col-12 text-center">
                     <h1>Tiendas</h1>
                     <div className="col-12">
-                        <button onClick={() => navigate('/tiendas/registro')} className="btn btn-primary rounded"><i className="fas fa-plus-circle"></i></button>
+                        <Link to='/tiendas/registro' className="btn btn-primary rounded"><i className="fas fa-plus-circle"></i></Link>
                     </div>
-                    <Table datos={datos} table={table} type="Market" />
+                    <Table datos={datos} table={table} type="tiendas" deleteOpcion={deleteOpcion} />
                 </div>
             </div>
         </div >

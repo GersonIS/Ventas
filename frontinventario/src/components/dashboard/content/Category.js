@@ -12,6 +12,11 @@ const Category = () => {
         setDatos(res.data);
     }
 
+    const deleteOpcion = async (URL, id) => {
+        await axios.delete(`${URL}${id}`);
+        data();
+    }
+
     useEffect(() => {
         data();
     }, [])
@@ -24,7 +29,7 @@ const Category = () => {
                     <div className="col-12">
                         <Link to='/categorias/registro' className="btn btn-primary rounded"><i className="fas fa-plus-circle"></i></Link>
                     </div>
-                    <Table datos={datos} table={table} type="Category" />
+                    <Table datos={datos} table={table} type="categorias" deleteOpcion={deleteOpcion} />
                 </div>
             </div>
         </div >
