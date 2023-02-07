@@ -12,7 +12,10 @@ const Category = () => {
         //Trabajar con sesiones para obtener el ID del empleado
         const empleadoId = 1;
         const mensaje = await axios.post(URL, { categoria, empleadoId });
-        setMsg(mensaje);
+        setTimeout(() => {
+            setMsg("");
+        },3000);
+        setMsg(mensaje.data.message);
         setCategoria('');
     }
 

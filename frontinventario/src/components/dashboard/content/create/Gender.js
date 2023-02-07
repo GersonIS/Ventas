@@ -12,7 +12,10 @@ const Gender = () => {
         //Trabajar con sesiones para obtener el ID del empleado
         const empleadoId = 1;
         const mensaje = await axios.post(URL, { genero, empleadoId });
-        setMsg(mensaje);
+        setTimeout(() => {
+            setMsg("");
+        },3000);
+        setMsg(mensaje.data.message);
         setGenero('');
     }
 

@@ -14,7 +14,10 @@ const Market = () => {
         //Trabajar con sesiones para obtener el ID del empleado
         const empleadoId = 1;
         const mensaje = await axios.post(URL, { descripcion, codigo_postal, direccion, empleadoId });
-        setMsg(mensaje);
+        setTimeout(() => {
+            setMsg("");
+        },3000);
+        setMsg(mensaje.data.message);
         setDescripcion('');
         setCodigo_postal('');
         setDireccion('');
