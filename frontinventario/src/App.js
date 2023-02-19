@@ -1,32 +1,36 @@
 import Login from "./components/Login";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Category from "./components/dashboard/content/Category";
-import CategoryCreate from "./components/dashboard/content/create/Category";
-import ClubCreate from "./components/dashboard/content/create/Club";
-import ColorCreate from "./components/dashboard/content/create/Color";
-import GenderCreate from "./components/dashboard/content/create/Gender";
-import ModelCreate from "./components/dashboard/content/create/Model";
-import SeasonCreate from "./components/dashboard/content/create/Season";
-import SizeCreate from "./components/dashboard/content/create/Size";
-import MarketCreate from "./components/dashboard/content/create/Market";
 import Main from "./components/dashboard/content/Main";
 import User from "./components/dashboard/content/User";
+import UserCreate from "./components/dashboard/content/create/User";
 import Dashboard from "./components/Dashboard";
-import Color from "./components/dashboard/content/Color";
-import Club from "./components/dashboard/content/Club";
-import Gender from "./components/dashboard/content/Gender";
-import Market from "./components/dashboard/content/Market";
-import Model from "./components/dashboard/content/Model";
-import Season from "./components/dashboard/content/Season";
-import Size from "./components/dashboard/content/Size";
+import Category from "./components/dashboard/content/Category";
+import CategoryCreate from "./components/dashboard/content/create/Category";
 import CategoryUpdate from "./components/dashboard/content/update/Category";
+import Club from "./components/dashboard/content/Club";
+import ClubCreate from "./components/dashboard/content/create/Club";
 import ClubUpdate from "./components/dashboard/content/update/Club";
+import Color from "./components/dashboard/content/Color";
+import ColorCreate from "./components/dashboard/content/create/Color";
 import ColorUpdate from "./components/dashboard/content/update/Color";
+import Gender from "./components/dashboard/content/Gender";
+import GenderCreate from "./components/dashboard/content/create/Gender";
 import GenderUpdate from "./components/dashboard/content/update/Gender";
+import Market from "./components/dashboard/content/Market";
+import MarketCreate from "./components/dashboard/content/create/Market";
 import MarketUpdate from "./components/dashboard/content/update/Market";
+import Model from "./components/dashboard/content/Model";
+import ModelCreate from "./components/dashboard/content/create/Model";
 import ModelUpdate from "./components/dashboard/content/update/Model";
+import Season from "./components/dashboard/content/Season";
+import SeasonCreate from "./components/dashboard/content/create/Season";
 import SeasonUpdate from "./components/dashboard/content/update/Season";
+import Size from "./components/dashboard/content/Size";
+import SizeCreate from "./components/dashboard/content/create/Size";
 import SizeUpdate from "./components/dashboard/content/update/Size";
+import Supplier from "./components/dashboard/content/Supplier";
+import SupplierCreate from "./components/dashboard/content/create/Supplier";
+import SupplierUpdate from "./components/dashboard/content/update/Supplier";
 
 function App() {
   return (
@@ -52,13 +56,17 @@ function App() {
         <Route path='/modelos' element={<Dashboard page={<Model />} />} />
         <Route path='/modelos/registro' element={<Dashboard page={<ModelCreate />} />} />
         <Route path='/modelos/actualizar/:id' element={<Dashboard page={<ModelUpdate />} />} />
+        <Route path='/proveedores' element={<Dashboard page={<Supplier />} />} />
+        <Route path='/proveedores/registro' element={<Dashboard page={<SupplierCreate />} />} />
+        <Route path='/proveedores/actualizar/:id' element={<Dashboard page={<SupplierUpdate />} />} />
         <Route path='/temporadas' element={<Dashboard page={<Season />} />} />
         <Route path='/temporadas/registro' element={<Dashboard page={<SeasonCreate />} />} />
         <Route path='/temporadas/actualizar/:id' element={<Dashboard page={<SeasonUpdate />} />} />
         <Route path='/tallas' element={<Dashboard page={<Size />} />} />
         <Route path='/tallas/registro' element={<Dashboard page={<SizeCreate />} />} />
         <Route path='/tallas/actualizar/:id' element={<Dashboard page={<SizeUpdate />} />} />
-        <Route path='/users' element={<Dashboard page={<User />} />} />
+        <Route path='/usuarios' element={<Dashboard page={<User />} />} />
+        <Route path='/usuarios/registro' element={<Dashboard page={<UserCreate />} />} />
       </Routes>
     </BrowserRouter>
   );

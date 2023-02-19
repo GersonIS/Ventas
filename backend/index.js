@@ -28,12 +28,14 @@ app.use('/categorias', routerCategoria);
 app.use('/clientes', routerCliente);
 app.use('/clubes', routerClub);
 app.use('/colores', routerColor);
-app.use('/empleados', routerEmpleado);
 app.use('/generos', routerGenero);
 app.use('/modelos', routerModelo);
 app.use('/proveedores', routerProveedor);
 app.use('/tallas', routerTalla);
 app.use('/temporadas', routerTemporada);
+app.use('/usuarios', routerEmpleado);
+
+app.use('/images', express.static('images'));
 
 try {
     await db.authenticate();

@@ -39,7 +39,7 @@ const Sidebar = ({ changeState, door }) => {
                         className="fas fa-cloud-sun-rain me-2"></i>Compras</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/users" className="text-decoration-none d-block px-3 py-2"><i
+                    <NavLink to="/usuarios" className="text-decoration-none d-block px-3 py-2"><i
                         className="fal fa-users me-2"></i>Users</NavLink>
                 </li>
                 <li>
@@ -55,7 +55,7 @@ const Sidebar = ({ changeState, door }) => {
                         className="fas fa-cloud-sun-rain me-2"></i>Productos</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/categorias" className="text-decoration-none d-block px-3 py-2"><i
+                    <NavLink to="/proveedores" className="text-decoration-none d-block px-3 py-2"><i
                         className="fas fa-cloud-sun-rain me-2"></i>Proveedores</NavLink>
                 </li>
                 <li>

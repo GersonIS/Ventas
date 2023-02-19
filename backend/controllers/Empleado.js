@@ -1,6 +1,18 @@
 import empleadoModel from "../models/Empleado.js";
 import personaModel from "../models/Persona.js";
 import userModel from "../models/User.js";
+import multer from "multer";
+
+export const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "./images/users/");
+    },
+    filename: (req,file,cb) => {
+        const ext = file.originalname.split('.').pop();
+        const ruta = `${Date.now()}.${ext}`;
+        cb(null, ruta);
+    }
+})
 
 export const getAllEmpleados = async (req, res) => {
     try {
@@ -22,15 +34,17 @@ export const getEmpleado = async (req, res) => {
 
 export const createEmpleado = async (req, res) => {
     try {
-        const { correo, celular, documento, username, password, ruta, sueldo, rol } = req.body;
+        const { correo, celular, documento, username, password, sueldo, rol } = req.body;
+        const  ruta  = req.file;
+        const fileName = `http://localhost:5000/images/users/${ruta.filename}`;
         await personaModel.create({ correo, celular, documento });
         const pId = await personaModel.findAll({ where: { correo } });
         const personaId = pId[0].id;
-        await userModel.create({ username, password, ruta, personaId });
+        await userModel.create({ username, password, ruta: fileName, personaId });
         const uId = await userModel.findAll({ where: { username } });
         const userId = uId[0].id;
         await empleadoModel.create({ sueldo, rol, userId });
-        res.json({ message: 'Se creo el empleado con exito' });
+        res.json({ message: "Se creo un empleado con exito" });
     } catch (error) {
         res.json({ message: `Error al crear un empleado ${error}` });
     }
