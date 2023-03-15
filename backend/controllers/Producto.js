@@ -1,5 +1,17 @@
 import imagenModel from "../models/Imagen.js";
 import productoModel from "../models/Producto.js";
+import multer from "multer";
+
+export const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "./images/products/");
+    },
+    filename: (req, file, cb) => {
+        const ext = file.originalname.split('.').pop();
+        const ruta = `${Date.now()}.${ext}`;
+        cb(null, ruta);
+    }
+})
 
 export const getAllProductos = async (req, res) => {
     try {
@@ -21,7 +33,13 @@ export const getProducto = async (req, res) => {
 
 export const createProducto = async (req, res) => {
     try {
-        const { codigo, producto, descripcion, ruta1, ruta2, ruta3, ruta4, categoriaId, empleadoId } = req.body;
+        const { codigo, producto, descripcion, categoriaId, empleadoId } = req.body;
+        const { ruta1, ruta2, ruta3, ruta4 } = req.files;
+        console.log(ruta1);
+        console.log(ruta2);
+        console.log(ruta3);
+        console.log(ruta4);
+        console.log(req.file);
         await productoModel.create({ codigo, producto, descripcion, categoriaId, empleadoId });
         const product = await productoModel.findAll({ where: { codigo } });
         const pId = product[0].id;

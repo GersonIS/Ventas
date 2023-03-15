@@ -6,7 +6,7 @@ const Navbar = ({changeState}) => {
         changeState(true);
     }
     return (
-        <nav className="navbar navbar-expand-md navbar-light bg-light">
+        <nav className="navbar navbar-expand-md navbar-dark" style={{background: "#1D0034"}}>
             <div className="container-fluid">
                 <div className="d-flex justify-content-between d-md-none d-block">
                     <button className="btn px-1 py-0 open-btn me-2" onClick={newValue}><i className="fal fa-stream"></i></button>
@@ -18,11 +18,11 @@ const Navbar = ({changeState}) => {
                     <i className="fal fa-bars"></i>
                 </button>
                 <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                    <ul className="navbar-nav mb-2 mb-lg-0">
-                        <li className="nav-item dropdown">
+                    <ul className="navbar-nav mb-2 mb-lg-0 text-end" style={{width: "150px"}}>
+                        <li className="nav-item dropdown float-right" style={{width: "150px"}}>
                             <a className="nav-link dropdown-toggle" href="!#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
+                                Gerson
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a className="dropdown-item" href="!#">Action</a></li>

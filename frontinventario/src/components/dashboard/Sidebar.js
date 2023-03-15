@@ -51,7 +51,7 @@ const Sidebar = ({ changeState, door }) => {
                         className="fas fa-cloud-sun-rain me-2"></i>Modelos</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/categorias" className="text-decoration-none d-block px-3 py-2"><i
+                    <NavLink to="/productos" className="text-decoration-none d-block px-3 py-2"><i
                         className="fas fa-cloud-sun-rain me-2"></i>Productos</NavLink>
                 </li>
                 <li>

@@ -31,6 +31,8 @@ import SizeUpdate from "./components/dashboard/content/update/Size";
 import Supplier from "./components/dashboard/content/Supplier";
 import SupplierCreate from "./components/dashboard/content/create/Supplier";
 import SupplierUpdate from "./components/dashboard/content/update/Supplier";
+import Product from "./components/dashboard/content/Product";
+import ProductCreate from "./components/dashboard/content/create/Product";
 
 function App() {
   return (
@@ -56,6 +58,8 @@ function App() {
         <Route path='/modelos' element={<Dashboard page={<Model />} />} />
         <Route path='/modelos/registro' element={<Dashboard page={<ModelCreate />} />} />
         <Route path='/modelos/actualizar/:id' element={<Dashboard page={<ModelUpdate />} />} />
+        <Route path='/productos' element={<Dashboard page={<Product />} />} />
+        <Route path='/productos/registro' element={<Dashboard page={<ProductCreate />} />} />
         <Route path='/proveedores' element={<Dashboard page={<Supplier />} />} />
         <Route path='/proveedores/registro' element={<Dashboard page={<SupplierCreate />} />} />
         <Route path='/proveedores/actualizar/:id' element={<Dashboard page={<SupplierUpdate />} />} />

@@ -48,7 +48,7 @@ const User = () => {
     
     const imageChange = (e) => {
         setRuta(e.target.files[0]);
-        setSelectedImage(e.target.files[0]);
+        setSelectedImage(window.URL.createObjectURL(e.target.files[0]));
     }
 
     return (
@@ -73,14 +73,14 @@ const User = () => {
             </div>
             <div className="form-floating mb-3 border-bottom">
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control border-0" id="password" placeholder="Contraseña" required />
-                <label htmlFor="username"><i className="fas fa-window me-2"></i>Contraseña</label>
+                <label htmlFor="password"><i className="fas fa-window me-2"></i>Contraseña</label>
             </div>
             <div className="form-floating mb-3 border-bottom">
-                <input type="file" name="ruta" onChange={ imageChange } className="form-control border-0" id="ruta" placeholder="ruta" required />
+                <input type="file" name="ruta" onChange={ (e) => imageChange(e) } className="form-control border-0" id="ruta" placeholder="ruta" required />
                 <label htmlFor="ruta"><i className="fas fa-window me-2"></i>Foto</label>
             </div>
-            <div className="col-12 text-center">
-                <img src={URL.createObjectURL(selectedImage)} alt="Preview" />
+            <div className="col-12 text-center mb-3">
+                <img src={selectedImage} alt="Preview" style={{maxWidth: "300px"}}/>
             </div>
             <div className="form-floating mb-3 border-bottom">
                 <input type="text" value={sueldo} onChange={(e) => setSueldo(e.target.value)} className="form-control border-0" id="sueldo" placeholder="Sueldo" required />

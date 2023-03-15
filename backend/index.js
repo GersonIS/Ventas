@@ -1,6 +1,7 @@
 import express from "express";
 import db from "./db/db.js";
 import cors from 'cors';
+import cookieParser from "cookie-parser";
 import './models/Atencion.js'; import './models/Categoria.js'; import './models/Cliente.js'; import './models/Club.js';
 import './models/Color.js'; import './models/Compra.js'; import './models/CompraProducto.js'; import './models/Comprobante.js';
 import './models/Departamento.js'; import './models/DetalleProducto.js'; import './models/Distrito.js'; import './models/Empleado.js';
@@ -18,24 +19,34 @@ import routerGenero from "./routes/Genero.js";
 import routerModelo from "./routes/Modelo.js";
 import routerProveedor from "./routes/Proveedor.js";
 import routerTalla from "./routes/Talla.js";
-import routerTemporada from "./routes/Temporada.js";
+import routerTemporada from "./routes/Temporada.js"
+import routerTienda from "./routes/Tienda.js";
+import routerProducto from "./routes/Producto.js";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 app.use('/categorias', routerCategoria);
 app.use('/clientes', routerCliente);
 app.use('/clubes', routerClub);
 app.use('/colores', routerColor);
 app.use('/generos', routerGenero);
 app.use('/modelos', routerModelo);
+app.use('/productos', routerProducto);
 app.use('/proveedores', routerProveedor);
 app.use('/tallas', routerTalla);
+app.use('/tiendas', routerTienda);
 app.use('/temporadas', routerTemporada);
 app.use('/usuarios', routerEmpleado);
 
 app.use('/images', express.static('images'));
+app.use((req, res, next) => {
+    if(!req.user)
+        res.header("Cache-Control", "private, no-cache, no-store, must-revalidate");
+    next();
+})
 
 try {
     await db.authenticate();
@@ -46,6 +57,7 @@ try {
 }
 
 app.get('/', (req, res) => {
+    res.cookie("jwt","soy una galleta");
     res.json({ m: "Hola lola" })
 })
 
